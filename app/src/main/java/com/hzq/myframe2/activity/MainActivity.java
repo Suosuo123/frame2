@@ -16,7 +16,6 @@ import com.hzq.myframe2.utils.log.LogUtils;
 import com.master.permissionhelper.PermissionHelper;
 import com.trello.rxlifecycle.components.support.RxAppCompatActivity;
 
-import java.util.Arrays;
 import java.util.List;
 
 import butterknife.BindView;
@@ -47,7 +46,7 @@ public class MainActivity extends MvpActivity<MainPresenter> implements MainView
     protected void onCreate() {
         super.onCreate();
 
-        permissionHelper = new PermissionHelper(this, new String[]{Manifest.permission.CAMERA, Manifest.permission.WRITE_EXTERNAL_STORAGE, Manifest.permission.READ_EXTERNAL_STORAGE}, 100);
+        permissionHelper = new PermissionHelper(this, new String[]{ Manifest.permission.WRITE_EXTERNAL_STORAGE, Manifest.permission.READ_EXTERNAL_STORAGE}, 100);
         permissionHelper.request(new PermissionHelper.PermissionCallback() {
             @Override
             public void onPermissionGranted() {

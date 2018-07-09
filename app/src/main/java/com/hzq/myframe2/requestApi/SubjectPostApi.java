@@ -32,10 +32,10 @@ public class SubjectPostApi extends BaseApi {
         super(listener, rxAppCompatActivity);
         setShowProgress(true);
         setCancel(true);
-        setCache(true);
-        setMothed("AppFiftyToneGraph/videoLink");
-        setCookieNetWorkTime(60);
-        setCookieNoNetWorkTime(24 * 60 * 60);
+        setCache(false);
+//        setMothed("AppFiftyToneGraph/videoLink");
+//        setCookieNetWorkTime(60);
+//        setCookieNoNetWorkTime(24 * 60 * 60);
     }
 
 

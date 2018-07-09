@@ -4,11 +4,10 @@ import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 
 import com.wzgiceman.rxretrofitlibrary.retrofit_rx.RxRetrofitApp;
-import com.wzgiceman.rxretrofitlibrary.retrofit_rx.download.DaoMaster;
-import com.wzgiceman.rxretrofitlibrary.retrofit_rx.download.DaoSession;
-import com.wzgiceman.rxretrofitlibrary.retrofit_rx.download.HttpDownManager;
+import com.wzgiceman.rxretrofitlibrary.retrofit_rx.greendao.gen.CookieResulteDao;
+import com.wzgiceman.rxretrofitlibrary.retrofit_rx.greendao.gen.DaoMaster;
+import com.wzgiceman.rxretrofitlibrary.retrofit_rx.greendao.gen.DaoSession;
 import com.wzgiceman.rxretrofitlibrary.retrofit_rx.http.cookie.CookieResulte;
-import com.wzgiceman.rxretrofitlibrary.retrofit_rx.http.cookie.CookieResulteDao;
 
 import org.greenrobot.greendao.query.QueryBuilder;
 
@@ -23,7 +22,7 @@ import java.util.List;
 
 public class CookieDbUtil {
     private static CookieDbUtil db;
-    private final static String dbName = "tests_db";
+    private final static String dbName = "rx_db";
     private DaoMaster.DevOpenHelper openHelper;
     private Context context;
 
