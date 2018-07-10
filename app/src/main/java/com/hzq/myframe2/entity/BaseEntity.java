@@ -1,9 +1,9 @@
-package com.hzq.myframe2.base;
+package com.hzq.myframe2.entity;
 
 
 import java.io.Serializable;
 
-public class BaseModel implements Serializable {
+public class BaseEntity implements Serializable {
 	private static final long serialVersionUID = 1L;
 	private int status = 0;
 

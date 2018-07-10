@@ -1,4 +1,4 @@
-package com.hzq.myframe2.activity;
+package com.hzq.myframe2.ui.activity;
 
 import android.Manifest;
 import android.support.annotation.NonNull;
@@ -7,10 +7,10 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.hzq.myframe2.R;
-import com.hzq.myframe2.base.MvpActivity;
-import com.hzq.myframe2.main.MainPresenter;
-import com.hzq.myframe2.main.MainView;
+import com.hzq.myframe2.base.BaseMvpActivity;
 import com.hzq.myframe2.requestApi.SubjectResulte;
+import com.hzq.myframe2.ui.contract.MainContract;
+import com.hzq.myframe2.ui.presenter.MainPresenter;
 import com.hzq.myframe2.utils.CommonUtils;
 import com.hzq.myframe2.utils.log.LogUtils;
 import com.master.permissionhelper.PermissionHelper;
@@ -21,7 +21,7 @@ import java.util.List;
 import butterknife.BindView;
 import butterknife.OnClick;
 
-public class MainActivity extends MvpActivity<MainPresenter> implements MainView {
+public class MainActivity extends BaseMvpActivity<MainPresenter> implements MainContract.MainView {
 
     @Override
     protected int getLayoutId() {
@@ -36,8 +36,7 @@ public class MainActivity extends MvpActivity<MainPresenter> implements MainView
 
     @OnClick(R.id.btn_request)
     public void onViewClicked() {
-        //请求接口
-        mvpPresenter.loadDataByRetrofitRxjava((RxAppCompatActivity) mActivity);
+        mPresenter.loadDataByRetrofitRxjava((RxAppCompatActivity) mActivity);
     }
 
     private PermissionHelper permissionHelper;
@@ -46,7 +45,7 @@ public class MainActivity extends MvpActivity<MainPresenter> implements MainView
     protected void onCreate() {
         super.onCreate();
 
-        permissionHelper = new PermissionHelper(this, new String[]{ Manifest.permission.WRITE_EXTERNAL_STORAGE, Manifest.permission.READ_EXTERNAL_STORAGE}, 100);
+        permissionHelper = new PermissionHelper(this, new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE, Manifest.permission.READ_EXTERNAL_STORAGE}, 100);
         permissionHelper.request(new PermissionHelper.PermissionCallback() {
             @Override
             public void onPermissionGranted() {
@@ -104,7 +103,7 @@ public class MainActivity extends MvpActivity<MainPresenter> implements MainView
 
     @Override
     protected MainPresenter createPresenter() {
-        return new MainPresenter(this);
+        return new MainPresenter(mActivity);
     }
 
     @Override

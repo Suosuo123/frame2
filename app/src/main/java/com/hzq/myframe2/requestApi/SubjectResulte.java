@@ -2,7 +2,6 @@ package com.hzq.myframe2.requestApi;
 
 /**
  * 测试显示数据
- * Created by WZG on 2016/7/16.
  */
 public class SubjectResulte {
     private int id;
@@ -11,7 +10,7 @@ public class SubjectResulte {
 
     @Override
     public String toString() {
-        return "name->"+name+"\n";
+        return "name->" + name + "\n";
 
     }
 

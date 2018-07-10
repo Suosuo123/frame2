@@ -1,15 +1,7 @@
-package com.hzq.myframe2.modle;
+package com.hzq.myframe2.entity;
 
-import com.hzq.myframe2.base.BaseModel;
 
-/**
- * Created by WuXiaolong on 2015/9/23.
- * 业务具体处理，包括负责存储、检索、操纵数据等
- * github:https://github.com/WuXiaolong/
- * 微信公众号：吴小龙同学
- * 个人博客：http://wuxiaolong.me/
- */
-public class MainModel extends BaseModel {
+public class MainEntity extends BaseEntity {
 
     private WeatherinfoBean weatherinfo;
 

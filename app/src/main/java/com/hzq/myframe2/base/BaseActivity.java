@@ -1,6 +1,5 @@
 package com.hzq.myframe2.base;
 
-import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.app.ProgressDialog;
 import android.graphics.Color;
@@ -8,7 +7,6 @@ import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.content.ContextCompat;
-import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
 import android.view.View;
 import android.view.Window;
@@ -18,6 +16,7 @@ import android.widget.TextView;
 
 import com.hzq.myframe2.MainApplication;
 import com.hzq.myframe2.R;
+import com.hzq.myframe2.widget.WinToast;
 import com.hzq.myframe2.widget.swipeBackLayout.ui.SwipeBackActivity;
 import com.hzq.myframe2.widget.uiView.UIImageView;
 
@@ -205,6 +204,10 @@ public abstract class BaseActivity extends SwipeBackActivity {
             // progressDialog.hide();会导致android.view.WindowLeaked
             progressDialog.dismiss();
         }
+    }
+
+    public void showMessage(CharSequence message) {
+        WinToast.toast(mActivity,message);
     }
 
 }

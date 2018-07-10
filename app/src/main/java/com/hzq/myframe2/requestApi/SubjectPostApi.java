@@ -9,7 +9,6 @@ import rx.Observable;
 
 /**
  * 测试数据
- * Created by WZG on 2016/7/16.
  */
 public class SubjectPostApi extends BaseApi {
     //    接口需要传入的参数 可自定义不同类型

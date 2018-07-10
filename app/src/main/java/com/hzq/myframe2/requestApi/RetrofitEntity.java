@@ -4,7 +4,6 @@ import java.util.List;
 
 /**
  * 直接请求返回数据格式
- * Created by WZG on 2016/7/16.
  */
 public class RetrofitEntity {
     private int ret;
