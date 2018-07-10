@@ -3,10 +3,9 @@ package com.wzgiceman.rxretrofitlibrary.retrofit_rx.http;
 import android.util.Log;
 
 import com.trello.rxlifecycle.android.ActivityEvent;
+import com.wzgiceman.rxretrofitlibrary.BuildConfig;
 import com.wzgiceman.rxretrofitlibrary.retrofit_rx.Api.BaseApi;
-import com.wzgiceman.rxretrofitlibrary.retrofit_rx.RxRetrofitApp;
 import com.wzgiceman.rxretrofitlibrary.retrofit_rx.exception.RetryWhenNetworkException;
-import com.wzgiceman.rxretrofitlibrary.retrofit_rx.http.cookie.CookieInterceptor;
 import com.wzgiceman.rxretrofitlibrary.retrofit_rx.listener.HttpOnNextListener;
 import com.wzgiceman.rxretrofitlibrary.retrofit_rx.subscribers.ProgressSubscriber;
 
@@ -54,11 +53,8 @@ public class HttpManager {
         //手动创建一个OkHttpClient并设置超时时间缓存等设置
         OkHttpClient.Builder builder = new OkHttpClient.Builder();
         builder.connectTimeout(basePar.getConnectionTime(), TimeUnit.SECONDS);
-//        builder.addInterceptor(new CookieInterceptor(basePar.isCache(), basePar.getUrl()));
-        if(RxRetrofitApp.isDebug()){
-            builder.addInterceptor(getHttpLoggingInterceptor());
-        }
-
+        //builder.addInterceptor(new CookieInterceptor(basePar.isCache(), basePar.getUrl()));
+        builder.addInterceptor(getHttpLoggingInterceptor());
 
         /*创建retrofit对象*/
         Retrofit retrofit = new Retrofit.Builder()
@@ -72,7 +68,7 @@ public class HttpManager {
         /*rx处理*/
         ProgressSubscriber subscriber = new ProgressSubscriber(basePar);
         Observable observable = basePar.getObservable(retrofit)
-                 /*失败后的retry配置*/
+                /*失败后的retry配置*/
                 .retryWhen(new RetryWhenNetworkException(basePar.getRetryCount(),
                         basePar.getRetryDelay(), basePar.getRetryIncreaseDelay()))
                 /*生命周期管理*/
@@ -102,16 +98,22 @@ public class HttpManager {
     /**
      * 日志输出
      * 自行判定是否添加
+     *
      * @return
      */
-    private HttpLoggingInterceptor getHttpLoggingInterceptor(){
+    private HttpLoggingInterceptor getHttpLoggingInterceptor() {
         //日志显示级别
-        HttpLoggingInterceptor.Level level= HttpLoggingInterceptor.Level.BODY;
+        HttpLoggingInterceptor.Level level;
+        if (BuildConfig.DEBUG) {
+            level = HttpLoggingInterceptor.Level.BODY;
+        } else {
+            level = HttpLoggingInterceptor.Level.NONE;
+        }
         //新建log拦截器
-        HttpLoggingInterceptor loggingInterceptor=new HttpLoggingInterceptor(new HttpLoggingInterceptor.Logger() {
+        HttpLoggingInterceptor loggingInterceptor = new HttpLoggingInterceptor(new HttpLoggingInterceptor.Logger() {
             @Override
             public void log(String message) {
-                Log.d("RxRetrofit","Retrofit====Message:"+message);
+                Log.d("RxRetrofit", "Retrofit====Message:" + message);
             }
         });
         loggingInterceptor.setLevel(level);

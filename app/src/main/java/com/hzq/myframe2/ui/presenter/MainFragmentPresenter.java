@@ -9,7 +9,9 @@ import com.hzq.myframe2.ui.contract.MainFragmentContract;
 import com.trello.rxlifecycle.components.support.RxAppCompatActivity;
 import com.wzgiceman.rxretrofitlibrary.retrofit_rx.listener.HttpOnNextListener;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 
 public class MainFragmentPresenter extends BaseRxPresenter<MainFragmentContract.MainView> implements MainFragmentContract.Presenter {
@@ -48,9 +50,11 @@ public class MainFragmentPresenter extends BaseRxPresenter<MainFragmentContract.
             }
         };
 
-        RequestTest postEntity = new RequestTest(simpleOnNextListener, rxAppCompatActivity);
-        postEntity.setAll(true);
-        mHttpManager.doHttpDeal(postEntity);
+        RequestTest requestTest = new RequestTest(simpleOnNextListener, rxAppCompatActivity);
+        Map<String, String> params = new HashMap<>();
+        params.put("once",String.valueOf(true));
+        requestTest.setParams(params);
+        mHttpManager.doHttpDeal(requestTest);
     }
 
 }
