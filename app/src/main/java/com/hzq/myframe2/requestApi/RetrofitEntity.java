@@ -8,7 +8,7 @@ import java.util.List;
 public class RetrofitEntity {
     private int ret;
     private String msg;
-    private List<SubjectResulte> data;
+    private List<ResultTest> data;
 
     public int getRet() {
         return ret;
@@ -26,11 +26,11 @@ public class RetrofitEntity {
         this.msg = msg;
     }
 
-    public List<SubjectResulte> getData() {
+    public List<ResultTest> getData() {
         return data;
     }
 
-    public void setData(List<SubjectResulte> data) {
+    public void setData(List<ResultTest> data) {
         this.data = data;
     }
 }

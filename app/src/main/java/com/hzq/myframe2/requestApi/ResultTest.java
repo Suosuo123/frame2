@@ -3,7 +3,7 @@ package com.hzq.myframe2.requestApi;
 /**
  * 测试显示数据
  */
-public class SubjectResulte {
+public class ResultTest {
     private int id;
     private String name;
     private String title;

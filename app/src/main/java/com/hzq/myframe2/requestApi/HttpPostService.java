@@ -25,6 +25,6 @@ public interface HttpPostService {
 
     @FormUrlEncoded
     @POST("AppFiftyToneGraph/videoLink")
-    Observable<BaseResultEntity<List<SubjectResulte>>> getAllVedioBys(@Field("once") boolean once_no);
+    Observable<BaseResultEntity<List<ResultTest>>> getAllVedioBys(@Field("once") boolean once_no);
 
 }

@@ -4,14 +4,15 @@ import android.Manifest;
 import android.support.annotation.NonNull;
 import android.text.TextUtils;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.hzq.myframe2.R;
 import com.hzq.myframe2.base.BaseMvpActivity;
-import com.hzq.myframe2.requestApi.SubjectResulte;
-import com.hzq.myframe2.ui.contract.MainContract;
-import com.hzq.myframe2.ui.presenter.MainPresenter;
-import com.hzq.myframe2.utils.CommonUtils;
+import com.hzq.myframe2.requestApi.ResultTest;
+import com.hzq.myframe2.ui.contract.MainActivityContract;
+import com.hzq.myframe2.ui.fragment.MainFragment;
+import com.hzq.myframe2.ui.presenter.MainActivityPresenter;
 import com.hzq.myframe2.utils.log.LogUtils;
 import com.master.permissionhelper.PermissionHelper;
 import com.trello.rxlifecycle.components.support.RxAppCompatActivity;
@@ -21,7 +22,7 @@ import java.util.List;
 import butterknife.BindView;
 import butterknife.OnClick;
 
-public class MainActivity extends BaseMvpActivity<MainPresenter> implements MainContract.MainView {
+public class MainActivity extends BaseMvpActivity<MainActivityPresenter> implements MainActivityContract.MainView {
 
     @Override
     protected int getLayoutId() {
@@ -33,6 +34,9 @@ public class MainActivity extends BaseMvpActivity<MainPresenter> implements Main
 
     @BindView(R.id.tv_result)
     TextView tvResult;
+
+    @BindView(R.id.rel_fragment)
+    RelativeLayout rel_fragment;
 
     @OnClick(R.id.btn_request)
     public void onViewClicked() {
@@ -75,15 +79,17 @@ public class MainActivity extends BaseMvpActivity<MainPresenter> implements Main
     protected void initView() {
         super.initView();
 
+        getSupportFragmentManager().beginTransaction().add(R.id.rel_fragment, MainFragment.newInstance()).commit();
+
 //        GlideApp.with(mActivity).asGif().load(R.mipmap.loading).placeholder(R.mipmap.ic_launcher)
 //                .fitCenter().into(iv_gif);
 
-        CommonUtils.loadOneTimeGif(mActivity, R.mipmap.loading, iv_gif, new CommonUtils.GifListener() {
-            @Override
-            public void gifPlayComplete() {
-                LogUtils.d("播放完毕");
-            }
-        });
+//        CommonUtils.loadOneTimeGif(mActivity, R.mipmap.loading, iv_gif, new CommonUtils.GifListener() {
+//            @Override
+//            public void gifPlayComplete() {
+//                LogUtils.d("播放完毕");
+//            }
+//        });
 
     }
 
@@ -102,12 +108,12 @@ public class MainActivity extends BaseMvpActivity<MainPresenter> implements Main
     }
 
     @Override
-    protected MainPresenter createPresenter() {
-        return new MainPresenter(mActivity);
+    protected MainActivityPresenter createPresenter() {
+        return new MainActivityPresenter(mActivity);
     }
 
     @Override
-    public void getDataSuccess(List<SubjectResulte> model) {
+    public void getDataSuccess(List<ResultTest> model) {
         tvResult.setText(model.toString());
     }
 

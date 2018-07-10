@@ -1,7 +1,6 @@
 package com.hzq.myframe2.requestApi;
 
 import com.trello.rxlifecycle.components.support.RxAppCompatActivity;
-import com.wzgiceman.rxretrofitlibrary.retrofit_rx.Api.BaseApi;
 import com.wzgiceman.rxretrofitlibrary.retrofit_rx.listener.HttpOnNextListener;
 
 import retrofit2.Retrofit;
@@ -10,15 +9,9 @@ import rx.Observable;
 /**
  * 测试数据
  */
-public class SubjectPostApi extends BaseApi {
-    //    接口需要传入的参数 可自定义不同类型
+public class RequestTest extends CommonRequest {
+    //接口需要传入的参数 可自定义不同类型
     private boolean all;
-    /*任何你先要传递的参数*/
-//    String xxxxx;
-//    String xxxxx;
-//    String xxxxx;
-//    String xxxxx;
-
 
     /**
      * 默认初始化需要给定回调和rx周期类
@@ -27,14 +20,8 @@ public class SubjectPostApi extends BaseApi {
      * @param listener
      * @param rxAppCompatActivity
      */
-    public SubjectPostApi(HttpOnNextListener listener, RxAppCompatActivity rxAppCompatActivity) {
+    public RequestTest(HttpOnNextListener listener, RxAppCompatActivity rxAppCompatActivity) {
         super(listener, rxAppCompatActivity);
-        setShowProgress(true);
-        setCancel(true);
-        setCache(false);
-//        setMothed("AppFiftyToneGraph/videoLink");
-//        setCookieNetWorkTime(60);
-//        setCookieNoNetWorkTime(24 * 60 * 60);
     }
 
 

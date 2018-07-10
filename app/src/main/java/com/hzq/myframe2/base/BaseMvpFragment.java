@@ -1,6 +1,7 @@
 package com.hzq.myframe2.base;
 
-public abstract class BaseMvpActivity<P extends BasePresenter> extends BaseActivity implements BaseView {
+public abstract class BaseMvpFragment<P extends BasePresenter> extends BaseFragment implements BaseView {
+
     protected P mPresenter;
 
     protected abstract P createPresenter();
@@ -14,8 +15,8 @@ public abstract class BaseMvpActivity<P extends BasePresenter> extends BaseActiv
     }
 
     @Override
-    protected void onDestroy() {
-        super.onDestroy();
+    protected void onFragmentDestroy() {
+        super.onFragmentDestroy();
         if (mPresenter != null) {
             mPresenter.detachView();
         }
@@ -35,4 +36,6 @@ public abstract class BaseMvpActivity<P extends BasePresenter> extends BaseActiv
     public void showToast(String msg) {
         showMessage(msg);
     }
+
 }
+

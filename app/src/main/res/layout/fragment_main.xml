@@ -17,17 +17,4 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp" />
 
-    <ImageView
-        android:id="@+id/iv_gif"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:scaleType="fitXY"
-        android:visibility="gone" />
-
-    <RelativeLayout
-        android:id="@+id/rel_fragment"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="#cccccc" />
-
 </LinearLayout>
