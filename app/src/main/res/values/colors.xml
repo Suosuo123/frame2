@@ -60,5 +60,9 @@
 
     <color name="red">#e28889</color>
 
+    <color name="main_bottom_color">#F9F9F9</color>
+    <color name="main_text_pressed">#1195db</color>
+    <color name="main_text_normal">#cccccc</color>
+
 
 </resources>

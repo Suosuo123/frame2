@@ -6,7 +6,7 @@
     android:layout_height="48dp"
     android:background="@color/main_gray">
 
-    <com.dhgate.dt.demo.widget.uiView.UIImageView
+    <com.hzq.myframe2.widget.uiView.UIImageView
         android:id="@+id/iv_back"
         android:layout_width="48dp"
         android:layout_height="match_parent"
@@ -30,7 +30,7 @@
         android:text="title"
         android:textSize="18sp" />
 
-    <com.dhgate.dt.demo.widget.uiView.UIImageView
+    <com.hzq.myframe2.widget.uiView.UIImageView
         android:id="@+id/iv_right"
         android:layout_width="48dp"
         android:layout_height="match_parent"

@@ -11,14 +11,15 @@ import java.util.List;
  * Created by caojun on 2018/5/31.
  */
 
-public interface MainActivityContract {
-     interface MainView extends BaseView {
-//        void getDataSuccess(List<ResultTest> model);
-//
-//        void getDataFail(String msg);
+public interface TestActivityContract {
+    interface TestView extends BaseView {
+        void getDataSuccess(List<ResultTest> model);
+
+        void getDataFail(String msg);
 
     }
-    interface Presenter extends BasePresenter<MainView> {
-//        void  loadDataByRetrofitRxjava(RxAppCompatActivity rxAppCompatActivity);
+
+    interface Presenter extends BasePresenter<TestView> {
+        void loadDataByRetrofitRxjava(RxAppCompatActivity rxAppCompatActivity);
     }
 }

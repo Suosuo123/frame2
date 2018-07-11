@@ -53,7 +53,6 @@ public abstract class BaseActivity extends SwipeBackActivity {
     @BindView(R.id.iv_right)
     public UIImageView iv_right;
 
-    @Nullable
     @Optional
     @OnClick(R.id.iv_back)
     public void backClick(View view) {

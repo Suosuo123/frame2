@@ -5,29 +5,20 @@
     android:gravity="center_horizontal"
     android:orientation="vertical">
 
-    <Button
-        android:id="@+id/btn_request"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="请求数据" />
+    <include layout="@layout/layout_title_bar" />
 
-    <TextView
-        android:id="@+id/tv_result"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp" />
-
-    <ImageView
-        android:id="@+id/iv_gif"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:scaleType="fitXY"
-        android:visibility="gone" />
-
-    <RelativeLayout
-        android:id="@+id/rel_fragment"
+    <android.support.v4.view.ViewPager
+        android:id="@+id/view_pager"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="#cccccc" />
+        android:layout_weight="1" />
+
+    <com.hzq.myframe2.widget.ViewPagerSlidingTabStrip
+        android:id="@+id/tabs"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@color/white"
+        android:elevation="20dp"
+        android:fillViewport="false" />
 
 </LinearLayout>
