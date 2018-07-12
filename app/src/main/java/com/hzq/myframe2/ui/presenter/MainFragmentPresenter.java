@@ -23,7 +23,7 @@ public class MainFragmentPresenter extends BaseRxPresenter<MainFragmentContract.
     }
 
     @Override
-    public void loadDataByRetrofitRxjava(RxAppCompatActivity rxAppCompatActivity) {
+    public void loadDataByRetrofitRxjava(RxAppCompatActivity rxAppCompatActivity,boolean showProgress) {
         //   回调一一对应
         HttpOnNextListener simpleOnNextListener = new HttpOnNextListener<List<ResultTest>>() {
             @Override
@@ -51,6 +51,7 @@ public class MainFragmentPresenter extends BaseRxPresenter<MainFragmentContract.
         };
 
         RequestTest requestTest = new RequestTest(simpleOnNextListener, rxAppCompatActivity);
+        requestTest.setShowProgress(showProgress);
         Map<String, String> params = new HashMap<>();
         params.put("once",String.valueOf(true));
         requestTest.setParams(params);

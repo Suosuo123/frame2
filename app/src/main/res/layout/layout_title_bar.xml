@@ -4,7 +4,7 @@
     android:id="@+id/rel_bar"
     android:layout_width="match_parent"
     android:layout_height="48dp"
-    android:background="@color/main_gray">
+    android:background="@color/main_blue">
 
     <com.hzq.myframe2.widget.uiView.UIImageView
         android:id="@+id/iv_back"
@@ -13,7 +13,7 @@
         android:layout_centerVertical="true"
         android:background="@null"
         android:padding="16dp"
-        android:src="@mipmap/img_back"
+        android:src="@mipmap/icon_back"
         drakeet:color_pressed="@color/transparent_60_gray"
         drakeet:shape_type="round" />
 
@@ -28,6 +28,7 @@
         android:ellipsize="end"
         android:gravity="center"
         android:text="title"
+        android:textColor="@color/white"
         android:textSize="18sp" />
 
     <com.hzq.myframe2.widget.uiView.UIImageView
@@ -36,10 +37,8 @@
         android:layout_height="match_parent"
         android:layout_alignParentRight="true"
         android:layout_centerVertical="true"
-        android:layout_marginRight="10dp"
-        drakeet:color_pressed="@color/transparent_60_gray"
-        drakeet:shape_type="round"
         android:padding="16dp"
-        android:visibility="gone"/>
+        drakeet:color_pressed="@color/transparent_60_gray"
+        drakeet:shape_type="round" />
 
 </RelativeLayout>

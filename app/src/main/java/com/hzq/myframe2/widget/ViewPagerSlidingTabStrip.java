@@ -61,9 +61,7 @@ public class ViewPagerSlidingTabStrip extends HorizontalScrollView implements Vi
         addView(tabsContainer);
 
 //        DisplayMetrics dm = getResources().getDisplayMetrics();
-
 //        tabPadding = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, tabPadding, dm);
-
 //        tabViewLayoutParams = new LinearLayout.LayoutParams(0, LayoutParams.MATCH_PARENT, 2.0f);
         tabViewLayoutParams = new LinearLayout.LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.MATCH_PARENT, 2.0f);
 
@@ -98,14 +96,13 @@ public class ViewPagerSlidingTabStrip extends HorizontalScrollView implements Vi
     }
 
     public void addTabView(final int position, String title) {
-        boolean screenAdaptation = false;
         final LayoutInflater inflater = LayoutInflater.from(getContext());
 
         View tabView = inflater.inflate(R.layout.layout_main_tab, null);
 
-        ImageView icon = (ImageView) tabView.findViewById(R.id.icon);
-        ImageView backIcon = (ImageView) tabView.findViewById(R.id.background);
-        TextView titleText = (TextView) tabView.findViewById(R.id.title);
+        ImageView icon = tabView.findViewById(R.id.icon);
+        ImageView backIcon = tabView.findViewById(R.id.background);
+        TextView titleText = tabView.findViewById(R.id.title);
 
         titleText.setText(title);
         switch (position) {
@@ -147,79 +144,59 @@ public class ViewPagerSlidingTabStrip extends HorizontalScrollView implements Vi
         this.onPagerTabChangeListener = o;
     }
 
-    public void switchTab(int position) {
-        RelativeLayout tabView;
-        TextView textView;
-        ImageView icon;
-
-//        tabView = (RelativeLayout) tabsContainer.getChildAt(position);
-//        textView = (TextView) tabView.findViewById(R.id.title);
-//        icon = (ImageView) tabView.findViewById(R.id.icon);
+//    public void switchTab(int position) {
+//        RelativeLayout tabView;
+//        TextView textView;
+//        ImageView icon;
 //
-//        textView.setTextColor(getResources().getColor(R.color.main_text_pressed));
+////        tabView = (RelativeLayout) tabsContainer.getChildAt(position);
+////        textView = (TextView) tabView.findViewById(R.id.title);
+////        icon = (ImageView) tabView.findViewById(R.id.icon);
+////
+////        textView.setTextColor(getResources().getColor(R.color.main_text_pressed));
+////
+////        switch (position){
+////            case 0:
+////                icon.setBackgroundResource(R.mipmap.main_chats_pressed);
+////                break;
+////            case 1:
+////                icon.setBackgroundResource(R.mipmap.main_contacts_pressed);
+////                break;
+////            case 2:
+////                icon.setBackgroundResource(R.mipmap.main_shop_pressed);
+////                break;
+////            case 3:
+////                icon.setBackgroundResource(R.mipmap.main_setting_pressed);
+////                break;
+////        }
 //
-//        switch (position){
-//            case 0:
-//                icon.setBackgroundResource(R.mipmap.main_chats_pressed);
-//                break;
-//            case 1:
-//                icon.setBackgroundResource(R.mipmap.main_contacts_pressed);
-//                break;
-//            case 2:
-//                icon.setBackgroundResource(R.mipmap.main_shop_pressed);
-//                break;
-//            case 3:
-//                icon.setBackgroundResource(R.mipmap.main_setting_pressed);
-//                break;
-//        }
-
-
-//        this.pager.setCurrentItem(position,true);
-
-        for (int i = 0; i < tabCount; ++i) {
-            tabView = (RelativeLayout) tabsContainer.getChildAt(i);
-            textView = (TextView) tabView.findViewById(R.id.title);
-            icon = (ImageView) tabView.findViewById(R.id.icon);
-            if (i == position) {
-                textView.setTextColor(getResources().getColor(R.color.main_text_pressed));
-                switch (i) {
-                    case 0:
-                        icon.setBackgroundResource(R.mipmap.main_chats_pressed);
-                        break;
-                    case 1:
-                        icon.setBackgroundResource(R.mipmap.main_contacts_pressed);
-                        break;
-                    case 2:
-                        icon.setBackgroundResource(R.mipmap.main_contacts_pressed);
-                        break;
-                    case 3:
-                        icon.setBackgroundResource(R.mipmap.main_shop_pressed);
-                        break;
-                    case 4:
-                        icon.setBackgroundResource(R.mipmap.main_setting_pressed);
-                        break;
-                }
-            } else {
-                textView.setTextColor(getResources().getColor(R.color.main_text_normal));
-                switch (i) {
-                    case 0:
-                        icon.setBackgroundResource(R.mipmap.main_chats_normal);
-                        break;
-                    case 1:
-                        icon.setBackgroundResource(R.mipmap.main_contacts_normal);
-                        break;
-                    case 2:
-                        icon.setBackgroundResource(R.mipmap.main_contacts_normal);
-                        break;
-                    case 3:
-                        icon.setBackgroundResource(R.mipmap.main_shop_normal);
-                        break;
-                    case 4:
-                        icon.setBackgroundResource(R.mipmap.main_setting_normal);
-                        break;
-                }
-            }
-//            else {
+//
+////        this.pager.setCurrentItem(position,true);
+//
+//        for (int i = 0; i < tabCount; ++i) {
+//            tabView = (RelativeLayout) tabsContainer.getChildAt(i);
+//            textView = (TextView) tabView.findViewById(R.id.title);
+//            icon = (ImageView) tabView.findViewById(R.id.icon);
+//            if (i == position) {
+//                textView.setTextColor(getResources().getColor(R.color.main_text_pressed));
+//                switch (i) {
+//                    case 0:
+//                        icon.setBackgroundResource(R.mipmap.main_chats_pressed);
+//                        break;
+//                    case 1:
+//                        icon.setBackgroundResource(R.mipmap.main_contacts_pressed);
+//                        break;
+//                    case 2:
+//                        icon.setBackgroundResource(R.mipmap.main_contacts_pressed);
+//                        break;
+//                    case 3:
+//                        icon.setBackgroundResource(R.mipmap.main_shop_pressed);
+//                        break;
+//                    case 4:
+//                        icon.setBackgroundResource(R.mipmap.main_setting_pressed);
+//                        break;
+//                }
+//            } else {
 //                textView.setTextColor(getResources().getColor(R.color.main_text_normal));
 //                switch (i) {
 //                    case 0:
@@ -229,26 +206,43 @@ public class ViewPagerSlidingTabStrip extends HorizontalScrollView implements Vi
 //                        icon.setBackgroundResource(R.mipmap.main_contacts_normal);
 //                        break;
 //                    case 2:
-//                        icon.setBackgroundResource(R.mipmap.main_shop_normal);
+//                        icon.setBackgroundResource(R.mipmap.main_contacts_normal);
 //                        break;
 //                    case 3:
+//                        icon.setBackgroundResource(R.mipmap.main_shop_normal);
+//                        break;
+//                    case 4:
 //                        icon.setBackgroundResource(R.mipmap.main_setting_normal);
 //                        break;
 //                }
 //            }
-        }
-
-    }
+////            else {
+////                textView.setTextColor(getResources().getColor(R.color.main_text_normal));
+////                switch (i) {
+////                    case 0:
+////                        icon.setBackgroundResource(R.mipmap.main_chats_normal);
+////                        break;
+////                    case 1:
+////                        icon.setBackgroundResource(R.mipmap.main_contacts_normal);
+////                        break;
+////                    case 2:
+////                        icon.setBackgroundResource(R.mipmap.main_shop_normal);
+////                        break;
+////                    case 3:
+////                        icon.setBackgroundResource(R.mipmap.main_setting_normal);
+////                        break;
+////                }
+////            }
+//        }
+//
+//    }
 
 
     private void addTab(final int position, View tab) {
         tab.setFocusable(true);
-        tab.setOnClickListener(new OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (onTabClickListener != null)
-                    onTabClickListener.onCurrentTabClicked(position);
-            }
+        tab.setOnClickListener(v -> {
+            if (onTabClickListener != null)
+                onTabClickListener.onCurrentTabClicked(position);
         });
 //        addTabDoubleTapListener(position, tab);
         tab.setPadding(tabPadding, 0, tabPadding, 0);

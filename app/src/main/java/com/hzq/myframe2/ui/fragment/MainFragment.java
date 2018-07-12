@@ -1,20 +1,22 @@
 package com.hzq.myframe2.ui.fragment;
 
 import android.support.annotation.NonNull;
-import android.widget.TextView;
+import android.widget.ListView;
 
 import com.hzq.myframe2.R;
-import com.hzq.myframe2.base.BaseMvpActivity;
+import com.hzq.myframe2.adapter.TestListAdapter;
 import com.hzq.myframe2.base.BaseMvpFragment;
 import com.hzq.myframe2.requestApi.ResultTest;
 import com.hzq.myframe2.ui.contract.MainFragmentContract;
 import com.hzq.myframe2.ui.presenter.MainFragmentPresenter;
+import com.scwang.smartrefresh.layout.SmartRefreshLayout;
+import com.scwang.smartrefresh.layout.api.RefreshLayout;
+import com.scwang.smartrefresh.layout.listener.OnRefreshLoadMoreListener;
 import com.trello.rxlifecycle.components.support.RxAppCompatActivity;
 
 import java.util.List;
 
 import butterknife.BindView;
-import butterknife.OnClick;
 
 public class MainFragment extends BaseMvpFragment<MainFragmentPresenter> implements MainFragmentContract.MainView {
 
@@ -33,18 +35,40 @@ public class MainFragment extends BaseMvpFragment<MainFragmentPresenter> impleme
         return R.layout.fragment_main;
     }
 
-    @BindView(R.id.tv_result)
-    TextView tvResult;
+    @BindView(R.id.srl_test)
+    SmartRefreshLayout srl_test;
 
-    @OnClick(R.id.btn_request)
-    public void requestClick() {
-        mPresenter.loadDataByRetrofitRxjava((RxAppCompatActivity) mActivity);
+    @BindView(R.id.lv_test)
+    ListView lv_test;
+
+    private TestListAdapter mAdapter;
+
+    @Override
+    protected void onCreate() {
+        super.onCreate();
     }
-
 
     @Override
     protected void initView() {
         super.initView();
+
+        mAdapter = new TestListAdapter(mActivity);
+        lv_test.setAdapter(mAdapter);
+
+        srl_test.setOnRefreshLoadMoreListener(new OnRefreshLoadMoreListener() {
+            @Override
+            public void onLoadMore(RefreshLayout refreshLayout) {
+                mPresenter.loadDataByRetrofitRxjava((RxAppCompatActivity) mActivity,false);
+            }
+
+            @Override
+            public void onRefresh(RefreshLayout refreshLayout) {
+                mPresenter.loadDataByRetrofitRxjava((RxAppCompatActivity) mActivity,false);
+            }
+        });
+
+        mPresenter.loadDataByRetrofitRxjava((RxAppCompatActivity) mActivity,true);
+
     }
 
     @Override
@@ -54,7 +78,9 @@ public class MainFragment extends BaseMvpFragment<MainFragmentPresenter> impleme
 
     @Override
     public void getDataSuccess(List<ResultTest> model) {
-        tvResult.setText(model.toString());
+        srl_test.finishRefresh();
+        srl_test.finishLoadMore();
+        mAdapter.bindData(model);
     }
 
     @Override

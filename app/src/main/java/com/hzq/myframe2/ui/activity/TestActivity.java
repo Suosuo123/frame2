@@ -79,7 +79,6 @@ public class TestActivity extends BaseMvpActivity<TestActivityPresenter> impleme
     protected void initView() {
         super.initView();
 
-        setActionBarWhite();
         setActionTitle("测试页面");
 
         getSupportFragmentManager().beginTransaction().add(R.id.rel_fragment, MainFragment.newInstance()).commit();

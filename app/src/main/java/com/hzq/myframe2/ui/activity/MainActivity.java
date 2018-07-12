@@ -44,6 +44,9 @@ public class MainActivity extends BaseMvpActivity<MainActivityPresenter> impleme
     @Override
     protected void initView() {
         super.initView();
+
+        setSwipeBackEnable(false);
+
         setActionTitle("主页面");
 
         initViewPager();

@@ -8,9 +8,7 @@ import com.trello.rxlifecycle.components.support.RxAppCompatActivity;
 import java.util.List;
 
 /**
- * Created by caojun on 2018/5/31.
  */
-
 public interface MainActivityContract {
      interface MainView extends BaseView {
 //        void getDataSuccess(List<ResultTest> model);

@@ -10,7 +10,17 @@ import rx.Observable;
  * 测试数据
  */
 public class RequestTest extends BaseRequest {
-    //接口需要传入的参数 可自定义不同类型
+    private boolean showProgress;
+
+    @Override
+    public boolean isShowProgress() {
+        return showProgress;
+    }
+
+    @Override
+    public void setShowProgress(boolean showProgress) {
+        this.showProgress = showProgress;
+    }
 
     /**
      * 默认初始化需要给定回调和rx周期类
@@ -21,6 +31,7 @@ public class RequestTest extends BaseRequest {
      */
     public RequestTest(HttpOnNextListener listener, RxAppCompatActivity rxAppCompatActivity) {
         super(listener, rxAppCompatActivity);
+        setShowProgress(isShowProgress());
     }
 
 

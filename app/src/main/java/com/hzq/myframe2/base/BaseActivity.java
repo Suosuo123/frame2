@@ -68,7 +68,7 @@ public abstract class BaseActivity extends SwipeBackActivity {
 
         ButterKnife.bind(mActivity);
 
-        initWindow(R.color.main_gray);
+        initWindow(R.color.main_blue);
 
         setSwipeBackEnable(true);//禁止滑动关闭界面
 
@@ -99,16 +99,6 @@ public abstract class BaseActivity extends SwipeBackActivity {
     }
 
     protected void initData() {
-    }
-
-    /**
-     * 设置actionbar颜色
-     */
-    public void setActionBarWhite() {
-        if (rel_bar != null) {
-            rel_bar.setBackgroundColor(ContextCompat.getColor(mActivity, R.color.white));
-        }
-        initWindow(R.color.white);
     }
 
     /**
@@ -149,9 +139,10 @@ public abstract class BaseActivity extends SwipeBackActivity {
             }
         }
 
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-            window.getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR);
-        }
+        //设置为浅色主题
+//        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+//            window.getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR);
+//        }
 
 //     window.addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_NAVIGATION);
     }
@@ -206,7 +197,7 @@ public abstract class BaseActivity extends SwipeBackActivity {
     }
 
     public void showMessage(CharSequence message) {
-        WinToast.toast(mActivity,message);
+        WinToast.toast(mActivity, message);
     }
 
 }

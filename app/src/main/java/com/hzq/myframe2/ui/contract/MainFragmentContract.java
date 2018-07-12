@@ -8,7 +8,6 @@ import com.trello.rxlifecycle.components.support.RxAppCompatActivity;
 import java.util.List;
 
 /**
- * Created by caojun on 2018/5/31.
  */
 
 public interface MainFragmentContract {
@@ -19,6 +18,6 @@ public interface MainFragmentContract {
 
     }
     interface Presenter extends BasePresenter<MainView> {
-        void  loadDataByRetrofitRxjava(RxAppCompatActivity rxAppCompatActivity);
+        void  loadDataByRetrofitRxjava(RxAppCompatActivity rxAppCompatActivity,boolean showProgress);
     }
 }
