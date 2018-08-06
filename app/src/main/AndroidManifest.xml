@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.hzq.myframe2">
+    package="com.dhgate.dhpartner">
 
     <uses-permission android:name="android.permission.INTERNET" />
     <!-- 网络状态权限 -->
