@@ -29,6 +29,7 @@ import butterknife.Optional;
 public abstract class BaseActivity extends SwipeBackActivity {
 
     protected Activity mActivity;
+    
     /**
      * 导航条
      */
