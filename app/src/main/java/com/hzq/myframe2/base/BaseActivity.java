@@ -30,8 +30,6 @@ public abstract class BaseActivity extends SwipeBackActivity {
 
     protected Activity mActivity;
 
-    protected Activity mActivity1;
-
     /**
      * 导航条
      */
