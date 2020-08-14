@@ -6,7 +6,7 @@
     android:layout_height="48dp"
     android:background="@color/main_blue">
 
-    <com.hzq.myframe2.widget.uiView.UIImageView
+    <com.hzq.frame.widget.uiView.UIImageView
         android:id="@+id/iv_back"
         android:layout_width="48dp"
         android:layout_height="match_parent"
@@ -31,7 +31,7 @@
         android:textColor="@color/white"
         android:textSize="18sp" />
 
-    <com.hzq.myframe2.widget.uiView.UIImageView
+    <com.hzq.frame.widget.uiView.UIImageView
         android:id="@+id/iv_right"
         android:layout_width="48dp"
         android:layout_height="match_parent"

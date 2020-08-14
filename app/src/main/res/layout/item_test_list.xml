@@ -12,7 +12,7 @@
         android:layout_margin="15dp"
         android:orientation="vertical">
 
-        <com.hzq.myframe2.widget.glideImageView.GlideImageView
+        <com.hzq.frame.widget.glideImageView.GlideImageView
             android:id="@+id/iv_icon"
             android:layout_width="50dp"
             android:layout_height="50dp"
