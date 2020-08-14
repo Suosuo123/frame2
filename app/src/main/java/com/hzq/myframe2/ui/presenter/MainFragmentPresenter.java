@@ -53,7 +53,7 @@ public class MainFragmentPresenter extends BaseRxPresenter<MainFragmentContract.
         RequestTest requestTest = new RequestTest(simpleOnNextListener, rxAppCompatActivity);
         requestTest.setShowProgress(showProgress);
         Map<String, String> params = new HashMap<>();
-        params.put("once",String.valueOf(true));
+//        params.put("once",String.valueOf(true));
         requestTest.setParams(params);
         mHttpManager.doHttpDeal(requestTest);
     }

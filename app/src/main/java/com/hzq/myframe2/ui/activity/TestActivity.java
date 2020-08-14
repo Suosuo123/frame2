@@ -21,6 +21,10 @@ import java.util.List;
 
 import butterknife.BindView;
 import butterknife.OnClick;
+import rx.Observable;
+import rx.Subscriber;
+import rx.functions.Action0;
+import rx.functions.Action1;
 
 public class TestActivity extends BaseMvpActivity<TestActivityPresenter> implements TestActivityContract.TestView {
 
@@ -98,6 +102,63 @@ public class TestActivity extends BaseMvpActivity<TestActivityPresenter> impleme
     @Override
     protected void initData() {
         super.initData();
+
+        String[] names = {"111", "222", "333"};
+        Observable.from(names)
+                .subscribe(new Action1<String>() {
+                    @Override
+                    public void call(String name) {
+
+                    }
+                });
+
+        Observable.create(new Observable.OnSubscribe<String>() {
+            @Override
+            public void call(Subscriber<? super String> subscriber) {
+                subscriber.onNext("Hello");
+                subscriber.onNext("Hi");
+                subscriber.onNext("Aloha");
+                subscriber.onCompleted();
+            }
+        }).subscribe();
+
+        Observable.create(new Observable.OnSubscribe<String>() {
+            @Override
+            public void call(Subscriber<? super String> subscriber) {
+                subscriber.onNext("Hello");
+                subscriber.onNext("Hi");
+                subscriber.onNext("Aloha");
+                subscriber.onCompleted();
+            }
+        }).subscribe(new Subscriber<String>() {
+            @Override
+            public void onStart() {
+                super.onStart();
+            }
+
+            @Override
+            public void onNext(String s) {
+
+            }
+
+            @Override
+            public void onCompleted() {
+            }
+
+            @Override
+            public void onError(Throwable e) {
+            }
+
+        });
+
+        Action1<Throwable> onErrorAction = new Action1<Throwable>() {
+            // onError()
+            @Override
+            public void call(Throwable throwable) {
+                // Error handling
+            }
+        };
+
     }
 
 
