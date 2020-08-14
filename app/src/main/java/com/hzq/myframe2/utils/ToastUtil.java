@@ -1,4 +1,4 @@
-package com.hzq.myframe2.widget;
+package com.hzq.myframe2.utils;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
@@ -9,11 +9,10 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.hzq.myframe2.R;
-import com.hzq.myframe2.utils.CommonUtils;
 
 
 @SuppressLint("InflateParams")
-public class WinToast {
+public class ToastUtil {
 
     public static void toast(Context context, int textRes) {
         CharSequence text = context.getResources().getText(textRes);
@@ -54,7 +53,7 @@ public class WinToast {
         TextView tv = (TextView) v.findViewById(android.R.id.message);
         tv.setText(text);
 
-        result.setGravity(Gravity.CENTER, 0, CommonUtils.dip2pixel(context, 50));
+        result.setGravity(Gravity.CENTER, 0, DensityUtil.dip2px(context, 50));
         result.setDuration(Toast.LENGTH_SHORT);
 
         return result;

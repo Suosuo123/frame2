@@ -16,7 +16,7 @@ import android.widget.TextView;
 
 import com.hzq.myframe2.MainApplication;
 import com.hzq.myframe2.R;
-import com.hzq.myframe2.widget.WinToast;
+import com.hzq.myframe2.utils.ToastUtil;
 import com.hzq.myframe2.widget.swipeBackLayout.ui.SwipeBackActivity;
 import com.hzq.myframe2.widget.uiView.UIImageView;
 
@@ -197,7 +197,7 @@ public abstract class BaseActivity extends SwipeBackActivity {
     }
 
     public void showMessage(CharSequence message) {
-        WinToast.toast(mActivity, message);
+        ToastUtil.toast(mActivity, message);
     }
 
 }

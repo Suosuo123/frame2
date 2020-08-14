@@ -8,7 +8,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.hzq.myframe2.widget.WinToast;
+import com.hzq.myframe2.utils.ToastUtil;
 
 import butterknife.ButterKnife;
 
@@ -82,6 +82,6 @@ public abstract class BaseFragment extends Fragment {
 	}
 
 	public void showMessage(CharSequence message) {
-		WinToast.toast(mActivity, message);
+		ToastUtil.toast(mActivity, message);
 	}
 }

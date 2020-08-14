@@ -2,15 +2,12 @@ apply plugin: 'com.android.library'
 apply plugin: 'org.greenrobot.greendao'
 
 android {
-    compileSdkVersion 25
+    compileSdkVersion rootProject.ext.GlobalCompileVersion
+    buildToolsVersion rootProject.ext.buildVersion
 
     defaultConfig {
-        minSdkVersion 14
-        targetSdkVersion 25
-        versionCode 1
-        versionName "1.0.0"
-
-
+        minSdkVersion rootProject.ext.minVersion
+        targetSdkVersion rootProject.ext.targetVersion
     }
     buildTypes {
         release {
@@ -29,8 +26,8 @@ android {
 
 dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
-    api 'org.greenrobot:greendao:3.2.0'
-    api 'org.greenrobot:greendao-generator:3.2.0'
+    api 'org.greenrobot:greendao:3.3.0'
+    api 'org.greenrobot:greendao-generator:3.3.0'
     /*rx-android-java*/
     api 'com.squareup.retrofit2:adapter-rxjava:2.2.0'
     api 'com.trello:rxlifecycle:1.0'
@@ -40,7 +37,7 @@ dependencies {
     api 'com.squareup.retrofit2:retrofit:2.4.0'
     api 'com.squareup.retrofit2:converter-gson:2.4.0'
 
-    api 'com.squareup.okhttp3:logging-interceptor:3.6.0'
-    api 'com.squareup.okhttp3:okhttp:3.10.0'
+    api 'com.squareup.okhttp3:logging-interceptor:3.12.1'
+    api 'com.squareup.okhttp3:okhttp:3.12.1'
 
 }

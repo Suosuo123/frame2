@@ -24,3 +24,11 @@ allprojects {
 task clean(type: Delete) {
     delete rootProject.buildDir
 }
+
+
+ext {
+    GlobalCompileVersion = 28
+    buildVersion = '28.0.3'
+    minVersion = 16
+    targetVersion = 28
+}
