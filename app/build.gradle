@@ -5,7 +5,7 @@ android {
     buildToolsVersion rootProject.ext.buildVersion
 
     defaultConfig {
-        applicationId "com.hzq.myframe2"
+        applicationId "com.hzq.frame"
 
         minSdkVersion rootProject.ext.minVersion
         targetSdkVersion rootProject.ext.targetVersion

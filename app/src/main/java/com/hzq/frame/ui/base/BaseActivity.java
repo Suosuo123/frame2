@@ -2,23 +2,21 @@ package com.hzq.frame.ui.base;
 
 import android.app.Activity;
 import android.app.ProgressDialog;
-import android.graphics.Color;
-import android.os.Build;
 import android.os.Bundle;
-import androidx.annotation.Nullable;
-import androidx.core.content.ContextCompat;
 import android.text.TextUtils;
 import android.view.View;
-import android.view.Window;
-import android.view.WindowManager;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toolbar;
+
+import androidx.annotation.Nullable;
 
 import com.hzq.frame.MainApplication;
 import com.hzq.frame.R;
 import com.hzq.frame.utils.ToastUtil;
 import com.hzq.frame.widget.swipeBackLayout.ui.SwipeBackActivity;
 import com.hzq.frame.widget.uiView.UIImageView;
+import com.leaf.library.StatusBarUtil;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -29,7 +27,7 @@ import butterknife.Optional;
 public abstract class BaseActivity extends SwipeBackActivity {
 
     protected Activity mActivity;
-    
+
     /**
      * 导航条
      */
@@ -61,14 +59,16 @@ public abstract class BaseActivity extends SwipeBackActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        StatusBarUtil.setTransparentForWindow(this);
+        StatusBarUtil.setLightMode(this);
         super.onCreate(savedInstanceState);
         mActivity = this;
+        //统一管理activity
+        MainApplication.getApplication().addActivity(mActivity);
 
         setContentView(getLayoutId());
 
         ButterKnife.bind(mActivity);
-
-        initWindow(R.color.main_blue);
 
         setSwipeBackEnable(true);//禁止滑动关闭界面
 
@@ -76,16 +76,16 @@ public abstract class BaseActivity extends SwipeBackActivity {
         initView();
         initData();
 
-        //统一管理activity
-        MainApplication.getApplication().addActivity(mActivity);
+        if (null != rel_bar) {
+            StatusBarUtil.setPaddingTop(mActivity, rel_bar);
+        }
     }
 
     @Override
     protected void onDestroy() {
-        super.onDestroy();
-
         //统一管理activity
         MainApplication.getApplication().removeActivity(mActivity);
+        super.onDestroy();
     }
 
 
@@ -119,57 +119,6 @@ public abstract class BaseActivity extends SwipeBackActivity {
         if (iv_right != null) {
             iv_right.setVisibility(View.VISIBLE);
             iv_right.setImageResource(drawableId);
-        }
-    }
-
-
-    public void initWindow(int colorResId) {
-
-        Window window = getWindow();
-        if (Build.VERSION.SDK_INT >= 19) {
-            window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS | WindowManager.LayoutParams.FLAG_TRANSLUCENT_NAVIGATION);
-        }
-        if (Build.VERSION.SDK_INT >= 21) {
-            window.setStatusBarColor(ContextCompat.getColor(mActivity, colorResId));
-//            window.setNavigationBarColor(getColor(colorResId));
-        } else {
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
-                window.addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
-                window.addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_NAVIGATION);
-            }
-        }
-
-        //设置为浅色主题
-//        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-//            window.getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR);
-//        }
-
-//     window.addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_NAVIGATION);
-    }
-
-    public void fullScreen() {
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-                //5.x开始需要把颜色设置透明，否则导航栏会呈现系统默认的浅灰色
-                Window window = getWindow();
-                View decorView = window.getDecorView();
-                //两个 flag 要结合使用，表示让应用的主体内容占用系统状态栏的空间
-                int option = View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
-                        | View.SYSTEM_UI_FLAG_LAYOUT_STABLE;
-                decorView.setSystemUiVisibility(option);
-                window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
-                window.setStatusBarColor(Color.TRANSPARENT);
-                //导航栏颜色也可以正常设置
-//                window.setNavigationBarColor(Color.TRANSPARENT);
-            } else {
-                Window window = getWindow();
-                WindowManager.LayoutParams attributes = window.getAttributes();
-                int flagTranslucentStatus = WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS;
-                int flagTranslucentNavigation = WindowManager.LayoutParams.FLAG_TRANSLUCENT_NAVIGATION;
-                attributes.flags |= flagTranslucentStatus;
-//                attributes.flags |= flagTranslucentNavigation;
-                window.setAttributes(attributes);
-            }
         }
     }
 
