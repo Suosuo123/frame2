@@ -1,6 +1,6 @@
 package com.hzq.myframe2.widget.glideImageView.progress;
 
-import android.support.annotation.NonNull;
+import androidx.annotation.NonNull;
 
 import java.io.IOException;
 

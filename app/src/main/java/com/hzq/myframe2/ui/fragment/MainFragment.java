@@ -1,6 +1,6 @@
 package com.hzq.myframe2.ui.fragment;
 
-import android.support.annotation.NonNull;
+import androidx.annotation.NonNull;
 import android.widget.ListView;
 
 import com.hzq.myframe2.R;

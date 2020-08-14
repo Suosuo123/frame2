@@ -1,8 +1,5 @@
 package com.hzq.myframe2.ui.activity;
 
-import android.Manifest;
-import android.support.annotation.NonNull;
-import android.text.TextUtils;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -13,8 +10,6 @@ import com.hzq.myframe2.requestApi.ResultTest;
 import com.hzq.myframe2.ui.contract.TestActivityContract;
 import com.hzq.myframe2.ui.fragment.MainFragment;
 import com.hzq.myframe2.ui.presenter.TestActivityPresenter;
-import com.hzq.myframe2.utils.log.LogUtils;
-import com.master.permissionhelper.PermissionHelper;
 import com.trello.rxlifecycle.components.support.RxAppCompatActivity;
 
 import java.util.List;
@@ -23,7 +18,6 @@ import butterknife.BindView;
 import butterknife.OnClick;
 import rx.Observable;
 import rx.Subscriber;
-import rx.functions.Action0;
 import rx.functions.Action1;
 
 public class TestActivity extends BaseMvpActivity<TestActivityPresenter> implements TestActivityContract.TestView {
@@ -47,36 +41,9 @@ public class TestActivity extends BaseMvpActivity<TestActivityPresenter> impleme
         mPresenter.loadDataByRetrofitRxjava((RxAppCompatActivity) mActivity);
     }
 
-    private PermissionHelper permissionHelper;
-
     @Override
     protected void onCreate() {
         super.onCreate();
-
-        permissionHelper = new PermissionHelper(this, new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE, Manifest.permission.READ_EXTERNAL_STORAGE}, 100);
-        permissionHelper.request(new PermissionHelper.PermissionCallback() {
-            @Override
-            public void onPermissionGranted() {
-                LogUtils.d("onPermissionGranted() called");
-            }
-
-            @Override
-            public void onIndividualPermissionGranted(String[] grantedPermission) {
-                LogUtils.d("onIndividualPermissionGranted() called with: grantedPermission = [" + TextUtils.join(",", grantedPermission) + "]");
-            }
-
-            @Override
-            public void onPermissionDenied() {
-                LogUtils.d("onPermissionDenied() called");
-
-            }
-
-            @Override
-            public void onPermissionDeniedBySystem() {
-                LogUtils.d("onPermissionDeniedBySystem() called");
-
-            }
-        });
     }
 
     @Override
@@ -161,14 +128,6 @@ public class TestActivity extends BaseMvpActivity<TestActivityPresenter> impleme
 
     }
 
-
-    @Override
-    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
-        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
-        if (permissionHelper != null) {
-            permissionHelper.onRequestPermissionsResult(requestCode, permissions, grantResults);
-        }
-    }
 
     @Override
     protected TestActivityPresenter createPresenter() {

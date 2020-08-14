@@ -1,14 +1,13 @@
 package com.hzq.myframe2.widget.uiView;
 
-import android.annotation.TargetApi;
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.RectF;
-import android.os.Build;
-import android.support.v7.widget.AppCompatButton;
+
+import androidx.appcompat.widget.AppCompatButton;
 import android.util.AttributeSet;
 
 import com.hzq.myframe2.R;

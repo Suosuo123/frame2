@@ -13,9 +13,11 @@ import android.graphics.RectF;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.Drawable;
-import android.support.annotation.ColorRes;
-import android.support.annotation.IntDef;
-import android.support.v7.widget.AppCompatImageView;
+
+import androidx.annotation.ColorRes;
+import androidx.annotation.IntDef;
+import androidx.appcompat.widget.AppCompatImageView;
+
 import android.util.AttributeSet;
 import android.view.MotionEvent;
 
@@ -127,11 +129,7 @@ public class ShapeImageView extends AppCompatImageView {
         paint.setColor(0xffffffff);
         paint.setAntiAlias(true);
 
-        int saveFlags = Canvas.MATRIX_SAVE_FLAG
-                | Canvas.CLIP_SAVE_FLAG
-                | Canvas.HAS_ALPHA_LAYER_SAVE_FLAG
-                | Canvas.FULL_COLOR_LAYER_SAVE_FLAG
-                | Canvas.CLIP_TO_LAYER_SAVE_FLAG;
+        int saveFlags = Canvas.ALL_SAVE_FLAG;
 
         canvas.saveLayer(0, 0, width, height, null, saveFlags);
 
