@@ -67,13 +67,15 @@ public class MainFragment extends BaseMvpFragment<MainFragmentPresenter> impleme
             }
         });
 
-        mPresenter.loadDataByRetrofitRxjava((RxAppCompatActivity) mActivity,true);
+
 
     }
 
     @Override
     protected void initData() {
         super.initData();
+
+        mPresenter.loadDataByRetrofitRxjava((RxAppCompatActivity) mActivity,true);
     }
 
     @Override

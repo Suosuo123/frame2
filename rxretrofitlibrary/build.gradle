@@ -23,9 +23,9 @@ android {
 }
 
 
-
 dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
+
     api 'org.greenrobot:greendao:3.3.0'
     api 'org.greenrobot:greendao-generator:3.3.0'
     /*rx-android-java*/
@@ -39,5 +39,4 @@ dependencies {
 
     api 'com.squareup.okhttp3:logging-interceptor:3.12.1'
     api 'com.squareup.okhttp3:okhttp:3.12.1'
-
 }

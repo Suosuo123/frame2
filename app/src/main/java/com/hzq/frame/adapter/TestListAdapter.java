@@ -80,7 +80,7 @@ public class TestListAdapter extends BaseAdapter {
             view.setTag(vh);
         }
         ViewHolder vh = (ViewHolder) view.getTag();
-        vh.iv_icon.loadImage("http://img1.imgtn.bdimg.com/it/u=4027212837,1228313366&fm=23&gp=0.jpg", R.mipmap.ic_launcher);
+        vh.iv_icon.loadImage("https://img1.imgtn.bdimg.com/it/u=4027212837,1228313366&fm=23&gp=0.jpg", R.mipmap.ic_launcher);
         vh.tv_name.setText(resultTest.getName());
         vh.tv_title.setText(resultTest.getTitle());
 
