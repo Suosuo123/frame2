@@ -1,7 +1,7 @@
 package com.hzq.frame.ui.contract;
 
-import com.hzq.frame.ui.base.BasePresenter;
-import com.hzq.frame.ui.base.BaseView;
+import com.example.baselib.ui.BasePresenter;
+import com.example.baselib.ui.BaseView;
 
 /**
  */

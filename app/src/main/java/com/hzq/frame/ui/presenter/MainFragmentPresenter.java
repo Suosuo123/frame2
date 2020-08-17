@@ -2,7 +2,7 @@ package com.hzq.frame.ui.presenter;
 
 import android.content.Context;
 
-import com.hzq.frame.ui.base.BaseRxPresenter;
+import com.example.baselib.ui.BaseRxPresenter;
 import com.hzq.frame.net.requestApi.RequestTest;
 import com.hzq.frame.entity.ResponseTest;
 import com.hzq.frame.ui.contract.MainFragmentContract;

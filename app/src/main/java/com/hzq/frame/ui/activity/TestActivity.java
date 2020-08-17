@@ -5,7 +5,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.hzq.frame.R;
-import com.hzq.frame.ui.base.BaseMvpActivity;
+import com.example.baselib.ui.BaseMvpActivity;
 import com.hzq.frame.entity.ResponseTest;
 import com.hzq.frame.ui.contract.TestActivityContract;
 import com.hzq.frame.ui.fragment.MainFragment;

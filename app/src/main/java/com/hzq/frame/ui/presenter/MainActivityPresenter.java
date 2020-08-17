@@ -2,7 +2,7 @@ package com.hzq.frame.ui.presenter;
 
 import android.content.Context;
 
-import com.hzq.frame.ui.base.BaseRxPresenter;
+import com.example.baselib.ui.BaseRxPresenter;
 import com.hzq.frame.ui.contract.MainActivityContract;
 
 

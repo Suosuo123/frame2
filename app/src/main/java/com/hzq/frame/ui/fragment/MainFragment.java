@@ -5,7 +5,7 @@ import android.widget.ListView;
 
 import com.hzq.frame.R;
 import com.hzq.frame.adapter.TestListAdapter;
-import com.hzq.frame.ui.base.BaseMvpFragment;
+import com.example.baselib.ui.BaseMvpFragment;
 import com.hzq.frame.entity.ResponseTest;
 import com.hzq.frame.ui.contract.MainFragmentContract;
 import com.hzq.frame.ui.presenter.MainFragmentPresenter;

@@ -9,7 +9,7 @@ import android.widget.TextView;
 
 import com.hzq.frame.R;
 import com.hzq.frame.entity.ResponseTest;
-import com.hzq.frame.widget.glideImageView.GlideImageView;
+import com.example.baselib.view.glideImageView.GlideImageView;
 
 import java.util.ArrayList;
 import java.util.List;

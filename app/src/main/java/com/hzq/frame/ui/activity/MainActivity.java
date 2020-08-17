@@ -8,7 +8,7 @@ import androidx.viewpager.widget.ViewPager;
 import android.view.ViewGroup;
 
 import com.hzq.frame.R;
-import com.hzq.frame.ui.base.BaseMvpActivity;
+import com.example.baselib.ui.BaseMvpActivity;
 import com.hzq.frame.ui.contract.MainActivityContract;
 import com.hzq.frame.ui.fragment.MainFragment;
 import com.hzq.frame.ui.presenter.MainActivityPresenter;

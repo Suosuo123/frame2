@@ -1,15 +1,9 @@
 package com.hzq.frame;
 
-import android.app.Activity;
-import android.app.Application;
-
-
 import com.alibaba.android.arouter.launcher.ARouter;
+import com.example.baselib.BaseApplication;
 
-import java.util.LinkedList;
-import java.util.List;
-
-public class MainApplication extends Application {
+public class MainApplication extends BaseApplication {
     private static MainApplication mContext;
 
     public static MainApplication getApplication() {
@@ -27,42 +21,4 @@ public class MainApplication extends Application {
         }
         ARouter.init(mContext);
     }
-
-    /**
-     * 运用list来保存们每一个activity
-     */
-    public List<Activity> mActivityList = new LinkedList<Activity>();
-
-    /**
-     * add Activity
-     *
-     * @param activity
-     */
-    public void addActivity(Activity activity) {
-        mActivityList.add(activity);
-    }
-
-    /**
-     * remove Activity
-     *
-     * @param activity
-     */
-    public void removeActivity(Activity activity) {
-        mActivityList.remove(activity);
-    }
-
-    /**
-     * 关闭每一个list内的activity
-     */
-    public void finishAllActivities() {
-        try {
-            for (Activity activity : mActivityList) {
-                if (activity != null)
-                    activity.finish();
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
-
 }
