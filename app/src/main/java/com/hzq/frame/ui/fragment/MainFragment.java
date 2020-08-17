@@ -1,11 +1,12 @@
 package com.hzq.frame.ui.fragment;
 
 import androidx.annotation.NonNull;
-import android.widget.ListView;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
-import com.hzq.frame.R;
-import com.hzq.frame.adapter.TestListAdapter;
 import com.example.baselib.ui.BaseMvpFragment;
+import com.hzq.frame.R;
+import com.hzq.frame.adapter.TestAdapter;
 import com.hzq.frame.entity.ResponseTest;
 import com.hzq.frame.ui.contract.MainFragmentContract;
 import com.hzq.frame.ui.presenter.MainFragmentPresenter;
@@ -39,9 +40,9 @@ public class MainFragment extends BaseMvpFragment<MainFragmentPresenter> impleme
     SmartRefreshLayout srl_test;
 
     @BindView(R.id.lv_test)
-    ListView lv_test;
+    RecyclerView rv_test;
 
-    private TestListAdapter mAdapter;
+    private TestAdapter mAdapter;
 
     @Override
     protected void onCreate() {
@@ -52,8 +53,10 @@ public class MainFragment extends BaseMvpFragment<MainFragmentPresenter> impleme
     protected void initView() {
         super.initView();
 
-        mAdapter = new TestListAdapter(mActivity);
-        lv_test.setAdapter(mAdapter);
+        mAdapter = new TestAdapter(mActivity);
+        rv_test.setLayoutManager(new LinearLayoutManager(mActivity));
+        rv_test.setAdapter(mAdapter);
+
 
         srl_test.setOnRefreshLoadMoreListener(new OnRefreshLoadMoreListener() {
             @Override
@@ -66,8 +69,6 @@ public class MainFragment extends BaseMvpFragment<MainFragmentPresenter> impleme
                 mPresenter.loadDataByRetrofitRxjava((RxAppCompatActivity) mActivity,false);
             }
         });
-
-
 
     }
 
@@ -82,7 +83,8 @@ public class MainFragment extends BaseMvpFragment<MainFragmentPresenter> impleme
     public void getDataSuccess(List<ResponseTest> model) {
         srl_test.finishRefresh();
         srl_test.finishLoadMore();
-        mAdapter.bindData(model);
+
+        mAdapter.setNewData(model);
     }
 
     @Override

@@ -1,7 +1,7 @@
 package com.hzq.frame.net;
 
 import com.hzq.frame.entity.ResponseTest;
-import com.wzgiceman.rxretrofitlibrary.retrofit_rx.Api.BaseResultEntity;
+import com.example.baselib.net.Api.BaseResultEntity;
 
 import java.util.List;
 import java.util.Map;

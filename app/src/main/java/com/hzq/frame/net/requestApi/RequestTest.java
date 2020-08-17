@@ -3,7 +3,7 @@ package com.hzq.frame.net.requestApi;
 import com.example.baselib.net.BaseRequest;
 import com.hzq.frame.net.HttpPostService;
 import com.trello.rxlifecycle.components.support.RxAppCompatActivity;
-import com.wzgiceman.rxretrofitlibrary.retrofit_rx.listener.HttpOnNextListener;
+import com.example.baselib.net.listener.HttpOnNextListener;
 
 import retrofit2.Retrofit;
 import rx.Observable;

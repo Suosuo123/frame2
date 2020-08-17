@@ -2,11 +2,11 @@ package com.example.baselib.net;
 
 import android.util.Log;
 
+import com.example.baselib.BuildConfig;
 import com.trello.rxlifecycle.android.ActivityEvent;
-import com.wzgiceman.rxretrofitlibrary.BuildConfig;
-import com.wzgiceman.rxretrofitlibrary.retrofit_rx.Api.BaseApi;
-import com.wzgiceman.rxretrofitlibrary.retrofit_rx.exception.RetryWhenNetworkException;
-import com.wzgiceman.rxretrofitlibrary.retrofit_rx.listener.HttpOnNextListener;
+import com.example.baselib.net.Api.BaseApi;
+import com.example.baselib.net.exception.RetryWhenNetworkException;
+import com.example.baselib.net.listener.HttpOnNextListener;
 
 import java.lang.ref.SoftReference;
 import java.util.concurrent.TimeUnit;

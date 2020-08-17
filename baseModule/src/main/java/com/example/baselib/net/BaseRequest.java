@@ -2,8 +2,8 @@ package com.example.baselib.net;
 
 import com.example.baselib.constants.ConstantData;
 import com.trello.rxlifecycle.components.support.RxAppCompatActivity;
-import com.wzgiceman.rxretrofitlibrary.retrofit_rx.Api.BaseApi;
-import com.wzgiceman.rxretrofitlibrary.retrofit_rx.listener.HttpOnNextListener;
+import com.example.baselib.net.Api.BaseApi;
+import com.example.baselib.net.listener.HttpOnNextListener;
 
 import java.util.HashMap;
 import java.util.Map;

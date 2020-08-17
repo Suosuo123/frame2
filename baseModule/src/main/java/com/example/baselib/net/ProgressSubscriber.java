@@ -6,13 +6,12 @@ import android.content.DialogInterface;
 import android.widget.Toast;
 
 import com.trello.rxlifecycle.components.support.RxAppCompatActivity;
-import com.wzgiceman.rxretrofitlibrary.retrofit_rx.Api.BaseApi;
-import com.wzgiceman.rxretrofitlibrary.retrofit_rx.RxRetrofitApp;
-import com.wzgiceman.rxretrofitlibrary.retrofit_rx.exception.HttpTimeException;
-import com.wzgiceman.rxretrofitlibrary.retrofit_rx.http.cookie.CookieResulte;
-import com.wzgiceman.rxretrofitlibrary.retrofit_rx.listener.HttpOnNextListener;
-import com.wzgiceman.rxretrofitlibrary.retrofit_rx.utils.AppUtil;
-import com.wzgiceman.rxretrofitlibrary.retrofit_rx.utils.CookieDbUtil;
+import com.example.baselib.net.Api.BaseApi;
+import com.example.baselib.net.exception.HttpTimeException;
+import com.example.baselib.net.cookie.CookieResulte;
+import com.example.baselib.net.listener.HttpOnNextListener;
+import com.example.baselib.net.utils.AppUtil;
+import com.example.baselib.net.utils.CookieDbUtil;
 
 import java.lang.ref.SoftReference;
 import java.net.ConnectException;

@@ -7,7 +7,7 @@ import com.hzq.frame.net.requestApi.RequestTest;
 import com.hzq.frame.entity.ResponseTest;
 import com.hzq.frame.ui.contract.TestActivityContract;
 import com.trello.rxlifecycle.components.support.RxAppCompatActivity;
-import com.wzgiceman.rxretrofitlibrary.retrofit_rx.listener.HttpOnNextListener;
+import com.example.baselib.net.listener.HttpOnNextListener;
 
 import java.util.HashMap;
 import java.util.List;
