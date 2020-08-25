@@ -71,8 +71,8 @@ public class HttpManager {
                 .retryWhen(new RetryWhenNetworkException(basePar.getRetryCount(),
                         basePar.getRetryDelay(), basePar.getRetryIncreaseDelay()))
                 /*生命周期管理*/
-//                .compose(basePar.getRxAppCompatActivity().bindToLifecycle())
-                .compose(basePar.getRxAppCompatActivity().bindUntilEvent(ActivityEvent.PAUSE))
+                .compose(basePar.getRxAppCompatActivity().bindToLifecycle())
+//                .compose(basePar.getRxAppCompatActivity().bindUntilEvent(ActivityEvent.DESTROY))
                 /*http请求线程*/
                 .subscribeOn(Schedulers.io())
                 .unsubscribeOn(Schedulers.io())

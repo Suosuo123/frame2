@@ -181,6 +181,8 @@ public class ProgressSubscriber<T> extends Subscriber<T> {
 
     /*错误统一处理*/
     private void errorDo(Throwable e) {
+        e.printStackTrace();
+
         Context context = mActivity.get();
         if (context == null) return;
         if (e instanceof SocketTimeoutException) {
