@@ -1,16 +1,19 @@
 package com.hzq.frame.ui.activity;
 
 import android.widget.ImageView;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
 
-import com.hzq.frame.R;
+import androidx.lifecycle.Observer;
+import androidx.lifecycle.ViewModelProvider;
+
 import com.example.baselib.ui.BaseMvpActivity;
+import com.hzq.frame.R;
 import com.hzq.frame.entity.ResponseTest;
+import com.hzq.frame.jetpack.Java8Observer;
+import com.hzq.frame.jetpack.NameViewModel;
+import com.hzq.frame.jetpack.TimerViewModel;
 import com.hzq.frame.ui.contract.TestActivityContract;
-import com.hzq.frame.ui.fragment.MainFragment;
 import com.hzq.frame.ui.presenter.TestActivityPresenter;
-import com.trello.rxlifecycle.components.support.RxAppCompatActivity;
 
 import java.util.List;
 
@@ -33,17 +36,20 @@ public class TestActivity extends BaseMvpActivity<TestActivityPresenter> impleme
     @BindView(R.id.tv_result)
     TextView tvResult;
 
-    @BindView(R.id.rel_fragment)
-    RelativeLayout rel_fragment;
-
     @OnClick(R.id.btn_request)
     public void onViewClicked() {
-        mPresenter.loadDataByRetrofitRxjava((RxAppCompatActivity) mActivity);
+//        mPresenter.loadDataByRetrofitRxjava((RxAppCompatActivity) mActivity);
+
+        mNameViewModel.getCurrentName().setValue("李四");
     }
 
     @Override
     protected void onCreate() {
         super.onCreate();
+
+        getLifecycle().addObserver(new Java8Observer());
+
+        iniComponent2();
     }
 
     @Override
@@ -51,20 +57,10 @@ public class TestActivity extends BaseMvpActivity<TestActivityPresenter> impleme
         super.initView();
 
         setActionTitle("测试页面");
-
-        getSupportFragmentManager().beginTransaction().add(R.id.rel_fragment, MainFragment.newInstance()).commit();
-
-//        GlideApp.with(mActivity).asGif().load(R.mipmap.loading).placeholder(R.mipmap.ic_launcher)
-//                .fitCenter().into(iv_gif);
-
-//        CommonUtils.loadOneTimeGif(mActivity, R.mipmap.loading, iv_gif, new CommonUtils.GifListener() {
-//            @Override
-//            public void gifPlayComplete() {
-//                LogUtils.d("播放完毕");
-//            }
-//        });
-
     }
+
+    NameViewModel mNameViewModel;
+
 
     @Override
     protected void initData() {
@@ -145,4 +141,35 @@ public class TestActivity extends BaseMvpActivity<TestActivityPresenter> impleme
     }
 
 
+    private void iniComponent() {
+        //通过ViewModelProviders得到ViewModel，如果ViewModel不存在就创建一个新的，如果已经存在就直接返回已经存在的
+        TimerViewModel timerViewModel = new ViewModelProvider(this).get(TimerViewModel.class);
+        timerViewModel.setOnTimeChangeListener(new TimerViewModel.OnTimeChangeListener() {
+            @Override
+            public void onTimeChanged(final int second) {
+                //更新UI界面
+                runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        tvResult.setText("TIME:" + second);
+                    }
+                });
+            }
+        });
+
+        timerViewModel.startTiming();
+    }
+
+
+    private void iniComponent2() {
+        //通过ViewModelProviders得到ViewModel，如果ViewModel不存在就创建一个新的，如果已经存在就直接返回已经存在的
+        mNameViewModel = new ViewModelProvider(this).get(NameViewModel.class);
+        // 订阅LiveData中当前Name数据变化，以lambda形式定义Observer
+        mNameViewModel.getCurrentName().observe(this, new Observer<String>() {
+            @Override
+            public void onChanged(String name) {
+                tvResult.setText(name);
+            }
+        });
+    }
 }

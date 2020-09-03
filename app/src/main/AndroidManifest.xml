@@ -28,8 +28,13 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
         <activity
             android:name="com.hzq.frame.ui.activity.TestActivity"
+            android:configChanges="orientation|screenSize|locale" />
+
+        <activity
+            android:name="com.hzq.frame.ui.activity.TestDataBindingActivity"
             android:configChanges="orientation|screenSize|locale"
             android:screenOrientation="portrait" />
 
